@@ -1,0 +1,20 @@
+<mat-sidenav-container class="sidenav-container">
+ 
+  <mat-sidenav-content>
+    <mat-toolbar class="header" style="position:fixed; margin-top:0px">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="headerTitle" [routerLink]="['/']">secondMeet</span>
+      <div class="header-links">
+        <button mat-button color="primary" [routerLink]="['/signin']">Sign in</button> |
+        <button mat-button color="primary" [routerLink]="['/signup']">Sign up</button>
+      </div>
+    </mat-toolbar>
+  </mat-sidenav-content>
+</mat-sidenav-container>

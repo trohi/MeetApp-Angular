@@ -1,0 +1,13 @@
+
+.button-header{
+    display:inline-flex;
+    margin-bottom: 10%;
+    margin-top:-5%;
+    width:100%;
+    justify-content: center
+}
+
+.button-header button{
+    margin-left:2%;
+    margin-right:2%
+}

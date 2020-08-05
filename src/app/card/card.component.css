@@ -1,0 +1,27 @@
+.dashboard-card{
+    width: 50%;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 5%
+}
+
+img{
+    max-width: 25vh
+}
+
+.mat-card > .mat-card-actions {
+    display:flex;
+    justify-content: right
+}
+
+.headerButtonContainer{
+    display:flex;
+    justify-content: center;
+    margin-top:10vh
+}
+
+.headerButtonContainer button{
+    margin-left: 5%;
+    margin-right:5%;
+    font-size: 19px
+}
