@@ -23,7 +23,11 @@ import { MatStepperModule } from '@angular/material/stepper'
 import { MatMenuModule } from '@angular/material/menu';
 import { CardComponent } from './card/card.component';
 import { SignupComponent } from './signup/signup.component';
-import { SigninComponent } from './signin/signin.component'
+import { SigninComponent } from './signin/signin.component';
+import { CreateMeetupComponent } from './create-meetup/create-meetup.component';
+import { EditMeetupComponent } from './edit-meetup/edit-meetup.component';
+import { MeetupsComponent } from './meetups/meetups.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
   declarations: [
@@ -32,7 +36,10 @@ import { SigninComponent } from './signin/signin.component'
     NavigatorComponent,
     CardComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    CreateMeetupComponent,
+    EditMeetupComponent,
+    MeetupsComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +59,8 @@ import { SigninComponent } from './signin/signin.component'
     MatListModule,
     MatGridListModule,
     MatMenuModule,
-    MatStepperModule
+    MatStepperModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
