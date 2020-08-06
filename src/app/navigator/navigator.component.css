@@ -37,6 +37,7 @@
 }
 
 .headerTitle{
-  color:#c2185b;
+  font-size:20px;
+  color:#f44336;
   cursor:pointer
 }

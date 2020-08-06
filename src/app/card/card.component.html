@@ -1,9 +1,9 @@
 <div class="headerButtonContainer">
-    <button mat-raised-button color="primary">Organise</button>
-    <button mat-raised-button color="primary">Create</button>
+    <button mat-raised-button color="primary">Explore Meetups</button>
+    <button mat-raised-button color="primary">Organise Meetups</button>
 </div>
 
-<mat-card class="dashboard-card" style="color:red">
+<mat-card class="dashboard-card" style="background-color:#3f51b5">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>Shiba Inu</mat-card-title>
@@ -40,7 +40,7 @@
           </p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-stroked-button  class="viewMeetupButton" color="primary">
+          <button mat-stroked-button  class="viewMeetupButton" color="primary" [routerLink]="['/create']">
                 View meetup
               <mat-icon aria-hidden="false">arrow_right_atl</mat-icon>
             </button>
@@ -68,4 +68,3 @@
                 </button>
             </mat-card-actions>
           </mat-card>
-          

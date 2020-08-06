@@ -12,6 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'
 import { NavigatorComponent } from './navigator/navigator.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -28,6 +29,7 @@ import { CreateMeetupComponent } from './create-meetup/create-meetup.component';
 import { EditMeetupComponent } from './edit-meetup/edit-meetup.component';
 import { MeetupsComponent } from './meetups/meetups.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+
 
 @NgModule({
   declarations: [
@@ -52,6 +54,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
     MatRadioModule,
     MatCardModule,
     ReactiveFormsModule,
+    FormsModule,
     LayoutModule,
     MatToolbarModule,
     MatSidenavModule,

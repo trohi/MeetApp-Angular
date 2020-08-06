@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-meetup.component.css']
 })
 export class CreateMeetupComponent implements OnInit {
-
+  time={13:30}
   constructor() { }
 
   ngOnInit(): void {

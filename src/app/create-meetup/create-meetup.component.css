@@ -1,0 +1,37 @@
+.container{
+    margin-top:5%;
+    margin-bottom:5%;
+    padding-top:3%;
+    width:40%;
+    background-color:grey;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 2%
+}
+
+.container p{
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+
+.dropdown-menu{
+    width:150px;
+    background-color:#fc958e
+}
+
+#mat-input-4{
+    font-size:19px
+}
+
+#pickAdateBtn{
+    color:#f44336;
+    background-color:#333
+}
+
+#createMeetupBtn{
+    color:#f44336;
+    background-color:#333;
+    font-size:18px 
+}
