@@ -1,0 +1,36 @@
+.dashboard-card{
+    width: 50%;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 5%;
+    border: 1px solid grey;
+    box-shadow: inset 42vh 10vh 45vh 10vh rgba(0,0,0,.85);
+}
+
+.mat-card > .mat-card-actions {
+    display:flex;
+    justify-content: right;
+}
+
+.mat-card > .mat-card-actions > button{
+    color:#f44336;
+    box-shadow: inset 4vh 10vh 5vh 10vh rgba(0,0,0,.85);
+    border: 1px solid #f44336;
+    opacity: 0.8
+}
+
+img{
+    max-width:250px;
+    border-radius: 4%
+}
+
+.backBtn{
+    margin-top:10px;
+    margin-left:10px;
+    background-color:#333;
+}
+
+.backIcon{
+    color:#f44336;
+    transform: scale(1.5)
+}

@@ -13,3 +13,4 @@ ngb-datepicker-navigation-select > .custom-select{background-color:grey; color:b
 span .ngb-dp-navigator-chevron{color:black}
 .btn-link{color:#f44336}
 .ngb-tp-chevron{color:black}
+.form-control::placeholder{color:#f44336}

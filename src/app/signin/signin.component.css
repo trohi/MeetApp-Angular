@@ -1,0 +1,45 @@
+.container{
+    margin-top:5%;
+    margin-bottom:5%;
+    padding-top:3%;
+    padding-bottom:2%;
+    width:40%;
+    background-color:grey;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 2%
+}
+
+.container p{
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+
+.loginWrapper{
+    margin-left:auto
+}
+
+.backBtn{
+    margin-top:10px;
+    margin-left:10px;
+    background-color:#333;
+}
+
+.backIcon{
+    color:#f44336;
+    transform: scale(1.5)
+}
+
+.loginBtn{
+    color:#f44336;
+    background-color:#333;
+    font-size:16px 
+}
+
+.linkToSignup{
+    color:#b12e24;
+    margin-left:auto;
+    margin-top:10px
+}

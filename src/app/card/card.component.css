@@ -1,17 +1,12 @@
-.dashboard-card{
-    width: 50%;
-    margin-left:auto;
-    margin-right: auto;
-    margin-top: 5%
+.carouselWrapper{
+    margin-top:50px;
+    margin-bottom:30px;
+    display:flex;
+    justify-content: center
 }
 
 img{
-    max-width: 25vh
-}
-
-.mat-card > .mat-card-actions {
-    display:flex;
-    justify-content: right
+    max-width: 155vh
 }
 
 .headerButtonContainer{
@@ -23,7 +18,9 @@ img{
 .headerButtonContainer button{
     margin-left: 2%;
     margin-right:2%;
-    font-size: 19px
+    font-size: 19px;
+    background-color: #333;
+    color:white
 }
 
 

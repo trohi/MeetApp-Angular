@@ -28,7 +28,8 @@ import { SigninComponent } from './signin/signin.component';
 import { CreateMeetupComponent } from './create-meetup/create-meetup.component';
 import { EditMeetupComponent } from './edit-meetup/edit-meetup.component';
 import { MeetupsComponent } from './meetups/meetups.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ViewMeetupComponent } from './view-meetup/view-meetup.component'
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
     SigninComponent,
     CreateMeetupComponent,
     EditMeetupComponent,
-    MeetupsComponent
+    MeetupsComponent,
+    ViewMeetupComponent
   ],
   imports: [
     BrowserModule,
