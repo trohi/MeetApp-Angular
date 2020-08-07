@@ -28,12 +28,12 @@
 }
 
 .backIcon{
-    color:#f44336;
+    color:#c9c4c4;
     transform: scale(1.5)
 }
 
 .signupBtn{
-    color:#f44336;
+    color:#c9c4c4;
     background-color:#333;
     font-size:16px 
 }

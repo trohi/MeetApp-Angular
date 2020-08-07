@@ -13,9 +13,9 @@
 }
 
 .mat-card > .mat-card-actions > button{
-    color:#f44336;
+    color:#c9c4c4;
     box-shadow: inset 4vh 10vh 5vh 10vh rgba(0,0,0,.85);
-    border: 1px solid #f44336;
+    border: 1px solid #c9c4c4;
     opacity: 0.8
 }
 
@@ -31,6 +31,6 @@ img{
 }
 
 .backIcon{
-    color:#f44336;
+    color:#c9c4c4;
     transform: scale(1.5)
 }

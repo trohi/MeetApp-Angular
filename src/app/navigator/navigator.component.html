@@ -10,13 +10,13 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span class="headerTitle" color="primary" [routerLink]="['/']">secondMeet</span>
+      <span class="headerTitle"  [routerLink]="['/']">secondMeet</span>
       <div class="header-links">
-        <button mat-button color="warn" [routerLink]="['/signin']">Sign in</button> |
-        <button mat-button color="warn" [routerLink]="['/signup']">Sign up</button>
+        <button mat-button  [routerLink]="['/signin']">Sign in</button> |
+        <button mat-button  [routerLink]="['/signup']">Sign up</button>
       </div>
     </mat-toolbar>
   </mat-sidenav-content>
-  <mat-divider style="background-colo:red"></mat-divider>
+  <mat-divider ></mat-divider>
 </mat-sidenav-container>
 

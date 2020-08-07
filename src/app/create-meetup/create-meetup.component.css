@@ -18,7 +18,7 @@
 
 .dropdown-menu{
     width:150px;
-    background-color:#fc958e
+    background-color:#c9c4c4
 }
 
 #mat-input-4{
@@ -26,12 +26,12 @@
 }
 
 #pickAdateBtn{
-    color:#f44336;
+    color:#c9c4c4;
     background-color:#333
 }
 
 #createMeetupBtn{
-    color:#f44336;
+    color:#c9c4c4;
     background-color:#333;
     font-size:18px 
 }
@@ -43,6 +43,6 @@
 }
 
 .backIcon{
-    color:#f44336;
+    color:#c9c4c4;
     transform: scale(1.5)
 }

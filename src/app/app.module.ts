@@ -22,14 +22,14 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatStepperModule } from '@angular/material/stepper'
 import { MatMenuModule } from '@angular/material/menu';
-import { CardComponent } from './card/card.component';
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { CreateMeetupComponent } from './create-meetup/create-meetup.component';
 import { EditMeetupComponent } from './edit-meetup/edit-meetup.component';
 import { MeetupsComponent } from './meetups/meetups.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ViewMeetupComponent } from './view-meetup/view-meetup.component'
+import { ViewMeetupComponent } from './view-meetup/view-meetup.component';
+import { CarouselComponent } from './carousel/carousel.component'
 
 
 @NgModule({
@@ -37,7 +37,7 @@ import { ViewMeetupComponent } from './view-meetup/view-meetup.component'
     AppComponent,
     FormCompComponent,
     NavigatorComponent,
-    CardComponent,
+    CarouselComponent,
     SignupComponent,
     SigninComponent,
     CreateMeetupComponent,
