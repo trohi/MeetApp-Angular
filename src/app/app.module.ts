@@ -31,6 +31,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ViewMeetupComponent } from './view-meetup/view-meetup.component';
 import { CarouselComponent } from './carousel/carousel.component'
 
+import { Store } from './shared/store.service'
 
 @NgModule({
   declarations: [
@@ -67,7 +68,7 @@ import { CarouselComponent } from './carousel/carousel.component'
     MatStepperModule,
     NgbModule
   ],
-  providers: [],
+  providers: [Store],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

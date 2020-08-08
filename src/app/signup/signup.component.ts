@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Store } from '../shared/store.service'
 
 @Component({
   selector: 'app-signup',
@@ -7,8 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  user = {
+    email:'',
+    password:''
+  }
 
-  constructor() { }
+  onSignup(){
+    this.store.createUser(this.user)
+  }
+
+  constructor(private store:Store) { }
 
   ngOnInit(): void {
   }
