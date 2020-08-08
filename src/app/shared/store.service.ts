@@ -5,6 +5,7 @@ import * as firebase from 'firebase'
 export class Store {
     private user:UserModel[];
     private newMeetup:MeetupModel[]
+    private isLoggedIn: boolean
 
     constructor(){
         firebase.initializeApp({
@@ -18,14 +19,28 @@ export class Store {
             measurementId: "G-PJV34LR1BM"
         })
     }
-
+    //methods
     createUser(payload){
         firebase.auth().createUserWithEmailAndPassword(payload.email,payload.password)
         .then(user=>{
-            console.log("Success!" + user)
+            console.log("Success!" + user);
+            this.isLoggedIn = true
         })
         .catch(error=>{
             console.log(error.message)
+            this.isLoggedIn = false
         })
+    };
+
+    logout(){
+        firebase.auth().signOut()
+        this.isLoggedIn = false
+        this.user=[]
+    }
+
+
+    //getters
+    getIsLoggedIn(){
+        return this.isLoggedIn
     }
 }

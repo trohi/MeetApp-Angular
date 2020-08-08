@@ -13,6 +13,7 @@ export class SignupComponent implements OnInit {
   }
 
   onSignup(){
+    console.log(this.store.getIsLoggedIn())
     this.store.createUser(this.user)
   }
 
