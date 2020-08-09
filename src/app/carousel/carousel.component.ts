@@ -7,7 +7,7 @@ import { Store } from '../shared/store.service'
   styleUrls: ['./carousel.component.css']
 })
 export class CarouselComponent implements OnInit {
-  organiseMeetupLink = "/signin"
+  
   get isLoggedIn():boolean{
     return this.store.getIsLoggedIn()
   };

@@ -11,6 +11,16 @@ export class AppComponent {
 
   get loader(){
     return this.store.getLoader()
-  }
+  };
+
+  get message(){
+    return this.store.getMessage()
+  };
+
+  closeDialog(){
+    return this.store.clearMessage()
+  };
+
+
   constructor(private store:Store){}
 }

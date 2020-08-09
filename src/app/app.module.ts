@@ -22,7 +22,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatStepperModule } from '@angular/material/stepper'
 import { MatMenuModule } from '@angular/material/menu';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { CreateMeetupComponent } from './create-meetup/create-meetup.component';
@@ -68,7 +68,7 @@ import { Store } from './shared/store.service'
     MatMenuModule,
     MatStepperModule,
     NgbModule,
-    MatProgressSpinnerModule,
+    MatProgressSpinnerModule
   ],
   providers: [Store],
   bootstrap: [AppComponent]

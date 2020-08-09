@@ -17,6 +17,14 @@ export class SigninComponent implements OnInit {
     return this.store.getIsLoggedIn()
   };
 
+  get message(){
+    return this.store.getMessage()
+  }
+
+  closeError(){
+    this.store.clearMessage()
+  }
+
   onSignIn(){
     this.store.signUserIn(this.user)
     if(this.isLoggedIn == true){

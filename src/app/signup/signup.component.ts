@@ -12,9 +12,17 @@ export class SignupComponent implements OnInit {
     password:''
   }
 
+  get message(){
+    return this.store.getMessage()
+  }
+
   onSignup(){
     console.log(this.store.getIsLoggedIn())
     this.store.createUser(this.user)
+  }
+
+  closeError(){
+    this.store.clearMessage()
   }
 
   constructor(private store:Store) { }

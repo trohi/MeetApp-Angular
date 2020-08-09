@@ -2,6 +2,11 @@
     <mat-icon class="backIcon">arrow_left_alt</mat-icon>
 </button>
 <div class="container">
+    <div class="messageContainer" *ngIf="message">
+        <button mat-icon-button class="closeErrorBtn" (click)="closeError()"><mat-icon class="closeIcon">clear</mat-icon></button>
+        <h2 id="errorHeader">Error:</h2>
+        <h3  class="mb-3" id="errorMessage">{{message}}</h3>
+    </div>
 <div class="title">
      <h2>Sign up</h2>
 </div>

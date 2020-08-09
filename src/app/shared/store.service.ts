@@ -13,6 +13,7 @@ export class Store {
     private newMeetup:MeetupModel[];
     private loading:boolean;
     private isLoggedIn: boolean;
+    private message:string;
 
     constructor(  private router:Router){
         firebase.initializeApp({
@@ -35,9 +36,11 @@ export class Store {
             this.isLoggedIn = true
             this.router.navigate(['/'])
             this.loading = false
+            this.message = ''
         })
         .catch(error=>{
             console.log(error.message)
+            this.message = error.message
             this.isLoggedIn = false
             this.loading = false
         })
@@ -47,13 +50,15 @@ export class Store {
         this.loading = true
         firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
         .then(user =>{
-            console.log("Successfull login");
+            console.log("Successfull login")
             this.router.navigate(['/'])
-            this.isLoggedIn = true;
+            this.isLoggedIn = true
             this.loading = false
+            this.message = ''
         })
         .catch(error =>{
-            this.isLoggedIn = false;
+            this.message = error.message
+            this.isLoggedIn = false
             console.log(error.message)
             this.loading = false
         })
@@ -65,6 +70,9 @@ export class Store {
         this.user=[]
     };
 
+    clearMessage(){
+        this.message = ''
+    }
 
     //getters
     getIsLoggedIn(){
@@ -73,5 +81,9 @@ export class Store {
 
     getLoader(){
         return this.loading
+    };
+
+    getMessage(){
+        return this.message
     }
 }
