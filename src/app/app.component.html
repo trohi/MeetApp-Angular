@@ -300,7 +300,9 @@
 
 <!-- Toolbar -->
 <app-navigator></app-navigator>
-
+<div class="loading" *ngIf="loader">
+  <mat-spinner mode="indeterminate"></mat-spinner> 
+</div>
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
 <!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
