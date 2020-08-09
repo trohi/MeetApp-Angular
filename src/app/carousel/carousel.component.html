@@ -1,6 +1,7 @@
 <div class="headerButtonContainer">
         <button mat-raised-button [routerLink]="['/meetup']">Explore Meetups</button>
-        <button mat-raised-button [routerLink]="['/create']">Organise Meetups</button>
+        <button mat-raised-button *ngIf="isLoggedIn"  [routerLink]="['/create']">Organise Meetups</button>
+        <button mat-raised-button *ngIf="!isLoggedIn" [routerLink]="['/signin']">Organise Meetups</button>
     </div>
     <div class="carouselWrapper">
     <ngb-carousel id="carousel" *ngIf="images">
