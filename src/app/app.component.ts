@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from './shared/store.service'
 
 @Component({
@@ -6,7 +6,7 @@ import { Store } from './shared/store.service'
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'secondMeet';
 
   get loader(){
@@ -23,4 +23,8 @@ export class AppComponent {
 
 
   constructor(private store:Store){}
+
+  ngOnInit():void{
+    this.store.loadMeetups()
+  }
 }

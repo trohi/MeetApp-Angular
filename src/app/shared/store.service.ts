@@ -42,7 +42,7 @@ export class Store {
             appId: "1:616116769823:web:7c9371c0e6a7609d86f12a",
             measurementId: "G-PJV34LR1BM"
         })
-    }
+    };
 
     
 
@@ -81,7 +81,7 @@ export class Store {
             console.log(error.message)
             this.loading = false
         })
-    }
+    };
 
     logout(){
         firebase.auth().signOut()
@@ -90,6 +90,7 @@ export class Store {
     };
 
     crateMeetup(payload){
+        this.loading = true
         let meetup = {
             title:payload.title,
             location:payload.location,
@@ -103,26 +104,46 @@ export class Store {
         .then(data=>{
             const key = data.key
             console.log(data)
-            /* const newMeetup= new MeetupModel(
-                meetup.title,
-                meetup.location,
-                meetup.imageUrl,
-                meetup.description,
-                meetup.date,
-                meetup.time,
-                key
-            ) */
             meetup.id = key
             this.newMeetup.push(meetup)
+            this.loading = false
         })
         .catch(error=>{
+            this.loading = false
             console.log(error.message)
         })
-    }
+    };
+
+    loadMeetups(){
+        this.loading = true
+        firebase.database().ref('meetups').once('value')
+        .then(data=>{
+            let meetups=[]
+            const obj = data.val()
+            for(let key in obj){
+                meetups.push({
+                    id:key,
+                    title: obj[key].title,
+                    description: obj[key].description,
+                    imageUrl: obj[key].imageUrl,
+                    date: obj[key].date,
+                    time: obj[key].time,
+                    location: obj[key].title,
+                    creatorId: obj[key].creatorId
+                });
+                this.newMeetup.push(...meetups)
+            }
+            this.loading = false
+        })
+        .catch(error=>{
+            this.loading = false
+            console.log(error.message)
+        })
+    };
 
     clearMessage(){
         this.message = ''
-    }
+    };
 
     //getters
     getIsLoggedIn(){
