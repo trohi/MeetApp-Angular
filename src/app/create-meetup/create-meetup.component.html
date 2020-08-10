@@ -8,25 +8,25 @@
 <p>
     <mat-form-field appearance="legacy">
         <mat-label >Title</mat-label>
-        <input matInput placeholder="Enter your title">
+        <input matInput placeholder="Enter your title" [(ngModel)]="newMeetup.title">
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         <mat-hint>Hint</mat-hint>
     </mat-form-field>
     <mat-form-field appearance="legacy" class="mt-3">
         <mat-label>Location</mat-label>
-        <input matInput placeholder="Location of the event">
+        <input matInput placeholder="Location of the event" [(ngModel)]="newMeetup.location">
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         <mat-hint>Hint</mat-hint>
     </mat-form-field>
     <mat-form-field appearance="legacy" class="mt-3">
         <mat-label>Image URL</mat-label>
-        <input matInput placeholder="Image link">
+        <input matInput placeholder="Image link" [(ngModel)]="newMeetup.imageUrl">
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         <mat-hint>Hint</mat-hint>
     </mat-form-field>
     <mat-form-field appearance="legacy" class="mt-3">
         <mat-label>Description</mat-label>
-        <textarea matInput placeholder="Short description"></textarea> 
+        <textarea matInput placeholder="Short description" [(ngModel)]="newMeetup.description"></textarea> 
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         <mat-hint>Hint</mat-hint>
     </mat-form-field>
@@ -35,12 +35,12 @@
     </span>
     <mat-divider></mat-divider>
     <mat-label class="mt-1 ml-3 mb-2">Pick a date</mat-label>
-    <input class="ml-3 mt-1" type="text" ngbDatepicker matInput #d="ngbDatepicker" />
-    <button id="pickAdateBtn" class="ml-3 mr-3" mat-flat-button  (click)="d.toggle()" style=""> <i class="material-icons">highlight_alt</i> Pick a date</button>
+    <input class="ml-3 mt-1" type="text" ngbDatepicker matInput #d="ngbDatepicker" [(ngModel)]="newMeetup.date" />
+    <button id="pickAdateBtn" class="ml-3 mr-3" mat-flat-button  (click)="d.toggle()"> <i class="material-icons">highlight_alt</i> Pick a date</button>
     <mat-label class="mt-3 ml-3">Pick a time</mat-label>
-    <ngb-timepicker class="ml-4" [ngModel]="time"></ngb-timepicker>
+    <ngb-timepicker class="ml-4" [(ngModel)]="newMeetup.time"></ngb-timepicker>
 </p>
     <mat-divider></mat-divider>
-    <button mat-flat-button class="mb-4" id="createMeetupBtn">Create meetup</button>
+    <button mat-flat-button class="mb-4" id="createMeetupBtn" (click)="onCreateMeetup()">Create meetup</button>
 
 </div>

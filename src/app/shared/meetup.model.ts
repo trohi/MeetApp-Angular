@@ -4,9 +4,9 @@ export class MeetupModel {
     public imageUrl: string;
     public description: string;
     public date: string;
-    public time: string
+    public time: string;
 
-    constructor(title:string, location:string, imageUrl:string, description:string, date:string, time:string){
+    constructor(title:string, location:string, imageUrl:string, description:string, date:string, time:string, id?:string){
         this.title = title;
         this.location = location;
         this.imageUrl = imageUrl;

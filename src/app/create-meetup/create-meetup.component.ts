@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '../shared/store.service'
+import { MeetupModel } from '../shared/meetup.model'
 
 @Component({
   selector: 'app-create-meetup',
@@ -7,7 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateMeetupComponent implements OnInit {
   time={13:30}
-  constructor() { }
+  constructor(private store: Store) { }
+
+  newMeetup= {
+    title:'',
+    location:'',
+    imageUrl:'',
+    description:'',
+    date:'',
+    time:''
+  } 
+
+  onCreateMeetup(){
+    //console.log(this.newMeetup.date, this.newMeetup.title, this.newMeetup.location, this.newMeetup.time)
+    const payloadMeetup = new MeetupModel(
+      this.newMeetup.title,
+      this.newMeetup.location,
+      this.newMeetup.imageUrl,
+      this.newMeetup.description,
+      this.newMeetup.date,
+      this.newMeetup.time
+    )
+    this.store.crateMeetup(payloadMeetup)
+  }
 
   ngOnInit(): void {
   }
