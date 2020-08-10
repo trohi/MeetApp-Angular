@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '../shared/store.service'
 
 @Component({
   selector: 'app-view-meetup',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-meetup.component.css']
 })
 export class ViewMeetupComponent implements OnInit {
+  meetups = []
 
-  constructor() { }
+  constructor(private store:Store) { }
 
   ngOnInit(): void {
+    this.meetups = this.store.getMeetups()
   }
 
 }

@@ -6,6 +6,7 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { CreateMeetupComponent } from './create-meetup/create-meetup.component'
 import { EditMeetupComponent } from './edit-meetup/edit-meetup.component'
 import { ViewMeetupComponent } from './view-meetup/view-meetup.component'
+import { MeetupsComponent } from './meetups/meetups.component'
 
 const routes: Routes = [
   {path:'', component:CarouselComponent},
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path:'signin', component:SigninComponent},
   {path:'create', component:CreateMeetupComponent},
   {path:'edit', component:EditMeetupComponent},
-  {path:'meetup', component:ViewMeetupComponent}
+  {path:'meetup', component:ViewMeetupComponent},
+  {path:'view-meetup', component:MeetupsComponent}
 ];
 
 @NgModule({

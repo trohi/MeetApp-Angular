@@ -45,7 +45,7 @@ import { Store } from './shared/store.service'
     CreateMeetupComponent,
     EditMeetupComponent,
     MeetupsComponent,
-    ViewMeetupComponent
+    ViewMeetupComponent,
   ],
   imports: [
     BrowserModule,

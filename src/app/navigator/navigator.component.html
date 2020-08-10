@@ -12,7 +12,7 @@
       </button>
       <span class="headerTitle"  [routerLink]="['/']">secondMeet</span>
       <div class="header-links" *ngIf="isLoggedIn">
-          <button mat-button (click)="onLogout()">Logout</button>
+          <button mat-button (click)="onLogout()" [routerLink]="['/']">Logout</button>
         </div>
       <div class="header-links" *ngIf="!isLoggedIn">
         <button mat-button  [routerLink]="['/signin']">Sign in</button> |

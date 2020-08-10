@@ -7,17 +7,18 @@ import { Store } from '../shared/store.service'
   styleUrls: ['./carousel.component.css']
 })
 export class CarouselComponent implements OnInit {
-  
+  meetups = []
+
   get isLoggedIn():boolean{
     return this.store.getIsLoggedIn()
   };
-
 
   constructor(private store:Store) { }
 
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
   
   ngOnInit(): void {
+    this.meetups = this.store.getMeetups()
   }
 
 }

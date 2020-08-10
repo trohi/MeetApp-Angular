@@ -6,7 +6,8 @@
 }
 
 img{
-    max-width: 155vh
+    max-width: 155vh;
+    width:150vh
 }
 
 .headerButtonContainer{

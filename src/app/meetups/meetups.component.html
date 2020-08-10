@@ -1,1 +1,22 @@
-<p>meetups works!</p>
+<button mat-flat-button class="backBtn" [routerLink]="['/']">
+    <mat-icon class="backIcon">arrow_left_alt</mat-icon>
+</button>
+<div class="cardWrapper">
+<mat-card class="dashboard-card">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Title</mat-card-title>
+    </mat-card-header>
+    <img class="image" src="https://upload.wikimedia.org/wikipedia/commons/2/23/Lake_mapourika_NZ.jpeg" alt="meetup-image">
+    <mat-card-subtitle>
+        <p>time</p>
+        <p>location</p>
+    </mat-card-subtitle>
+    <mat-card-content>
+        <span>DESCRIPTION</span>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="warn">Register</button>
+    </mat-card-actions>
+</mat-card>
+</div>

@@ -4,14 +4,14 @@
         <button mat-raised-button *ngIf="!isLoggedIn" [routerLink]="['/signin']">Organise Meetups</button>
     </div>
     <div class="carouselWrapper">
-    <ngb-carousel id="carousel" *ngIf="images">
-      <ng-template ngbSlide>
+    <ngb-carousel id="carousel" *ngIf="images" >
+      <ng-template ngbSlide *ngFor="let item of meetups; let i = index">
         <div class="picsum-img-wrapper">
-          <img [src]="images[0]" alt="Random first slide">
+          <img [src]="item.imageUrl" alt="Random first slide">
         </div>
         <div class="carousel-caption">
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3>{{item.title}}</h3>
+          <p>{{item.description}}</p>
         </div>
       </ng-template>
       <ng-template ngbSlide>
