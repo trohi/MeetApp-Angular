@@ -1,4 +1,3 @@
-import { UserModel } from './user.model'
 import { MeetupModel } from './meetup.model'
 import * as firebase from 'firebase'
 import { Router } from '@angular/router'
@@ -29,12 +28,12 @@ export class Store {
     }
 ]
     private User;
-    private loading:boolean;
+    private loading: boolean;
     private isLoggedIn: boolean;
-    private message:string;
+    private message: string;
     private singleMeetup;
 
-    constructor(  private router:Router){
+    constructor(private router: Router){
         firebase.initializeApp({
             apiKey: "AIzaSyArFIq1DcSJowifCpp7Gu3Qu_rZvyxCa7c",
             authDomain: "angularmeetup-6865a.firebaseapp.com",
@@ -47,14 +46,11 @@ export class Store {
         })
     };
 
-    
-
     //methods
     createUser(payload){
         this.loading = true
         firebase.auth().createUserWithEmailAndPassword(payload.email,payload.password)
         .then(user=>{
-            console.log(user);
             let newUser = {
                 id: user.user.uid,
                 registeredMeetups:[],
@@ -72,7 +68,6 @@ export class Store {
             })
         })
         .catch(error=>{
-            console.log(error.message)
             this.message = error.message
             this.isLoggedIn = false
             this.loading = false
@@ -83,7 +78,6 @@ export class Store {
         this.loading = true
         firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
         .then(user =>{
-            console.log("Successfull login")
             this.router.navigate(['/'])
             let newUser = {
                 id: user.user.uid,
@@ -104,7 +98,6 @@ export class Store {
         .catch(error =>{
             this.message = error.message
             this.isLoggedIn = false
-            console.log(error.message)
             this.loading = false
         })
     };
@@ -130,9 +123,8 @@ export class Store {
         })
         .catch(error=>{
             this.loading = false
-            console.log(error)
         })
-    }
+    };
 
     logout(){
         firebase.auth().signOut()
@@ -154,7 +146,6 @@ export class Store {
         firebase.database().ref('meetups').push(meetup)
         .then(data=>{
             const key = data.key
-            console.log(data)
             meetup.creatorId = key
             this.newMeetup.push(meetup)
             this.loading = false
@@ -162,7 +153,6 @@ export class Store {
         })
         .catch(error=>{
             this.loading = false
-            console.log(error.message)
         })
     };
 
@@ -172,7 +162,6 @@ export class Store {
         .then(data=>{
             let meetups=[]
             const obj = data.val()
-            console.log(obj)
             for(let key in obj){
                 meetups.push({
                     id:key,
@@ -183,20 +172,18 @@ export class Store {
                     time: obj[key].time,
                     location: obj[key].title,
                     creatorId: obj[key].creatorId
-                });
+                })
             }
             this.newMeetup.push(...meetups)
             this.loading = false
         })
         .catch(error=>{
             this.loading = false
-            console.log(error.message)
         })
     };
 
     registerUserForMeetup(payload){
         this.loading = true
-        const user = this.User
         firebase.database().ref('/users/' + this.User.id + '/registrations/').push(payload)
         .then(data=>{
             if(this.User.registeredMeetups.findIndex(meetup=> meetup.id === payload) >= 0){
@@ -208,7 +195,6 @@ export class Store {
         })
         .catch(error=>{
             this.loading = false
-            console.log(error.message)
         })
     };
 
@@ -219,7 +205,6 @@ export class Store {
             return
         }
         const fbKey = user.fbKeys[payload]
-        console.log(payload)
         firebase.database().ref('/users/' + user.id + '/registrations/').child(fbKey)
         .remove()
         .then(()=>{
@@ -230,9 +215,8 @@ export class Store {
         })
         .catch(error=>{
             this.loading = false
-            console.log(error.message)
         })
-    }
+    };
 
     clearMessage(){
         this.message = ''
@@ -242,7 +226,6 @@ export class Store {
         let specificMeetup = this.newMeetup.find(meet=>{
             return meet.title === title
         })
-        console.log(specificMeetup)
         this.singleMeetup = specificMeetup
     };
 
@@ -260,7 +243,6 @@ export class Store {
     };
 
     getMeetups(){
-        //console.log(this.newMeetup)
         return this.newMeetup
     };
 
@@ -270,6 +252,6 @@ export class Store {
 
     getSingleMeetup(){
         return this.singleMeetup
-    }
+    };
 
 }
