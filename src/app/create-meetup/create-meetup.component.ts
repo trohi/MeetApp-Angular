@@ -16,8 +16,8 @@ export class CreateMeetupComponent implements OnInit {
     location:'',
     imageUrl:'',
     description:'',
-    date:'',
-    time:''
+    date:{},
+    time:{}
   } 
 
   onCreateMeetup(){
@@ -30,7 +30,7 @@ export class CreateMeetupComponent implements OnInit {
       this.newMeetup.date,
       this.newMeetup.time
     )
-    this.store.crateMeetup(payloadMeetup)
+    this.store.createMeetup(payloadMeetup)
   }
 
   ngOnInit(): void {

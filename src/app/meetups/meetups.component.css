@@ -1,5 +1,6 @@
 .image{
-    max-height: 70vh
+    width: 60vh;
+    height: 50vh;
 }
 
 .backBtn{
@@ -14,11 +15,56 @@
 }
 
 .cardWrapper{
+    margin-top:5%;
     display:flex;
-    justify-content: center
+    justify-content: center;
 }
 
 .dashboard-card{
-    background-color: rgb(181, 212, 238);
-    width:70%
+    background-color: rgb(83, 83, 83);
+    width:70%;
+}
+
+.Wrap{
+    display:flex
+}
+
+.firstHalf{
+    width:30%;
+    margin-right:2%;
+}
+
+.secondHalf{
+    width:40%
+}
+
+mat-card-subtitle{
+    margin-left:5%;
+    margin-top:15%;
+    color:rgb(196, 189, 189)
+}
+
+mat-card-content{
+    margin-left:5%;
+    color:white
+}
+
+mat-card-title{
+    color:white
+}
+
+.registerBtn{
+    background-color:black;
+    color:white;
+}
+
+.mat-card > .mat-card-actions:last-child{
+    margin-left:85%
+}
+
+.mat-divider{
+    border-right-color:black;
+    width:5px;
+    margin-top:7%;
+    margin-bottom:3%
 }

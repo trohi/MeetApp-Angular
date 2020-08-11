@@ -1,22 +1,29 @@
 <button mat-flat-button class="backBtn" [routerLink]="['/']">
     <mat-icon class="backIcon">arrow_left_alt</mat-icon>
 </button>
-<div class="cardWrapper">
+<div class="cardWrapper" *ngIf="oneMeetup">
 <mat-card class="dashboard-card">
-    <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Title</mat-card-title>
-    </mat-card-header>
-    <img class="image" src="https://upload.wikimedia.org/wikipedia/commons/2/23/Lake_mapourika_NZ.jpeg" alt="meetup-image">
-    <mat-card-subtitle>
-        <p>time</p>
-        <p>location</p>
-    </mat-card-subtitle>
-    <mat-card-content>
-        <span>DESCRIPTION</span>
-    </mat-card-content>
+    <div class="Wrap">
+        <div class="firtHalf">
+            <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{oneMeetup.title}}</mat-card-title>
+            </mat-card-header>
+            <img class="image" [src]="oneMeetup.imageUrl" alt="meetup-image">
+        </div>
+        <mat-divider [vertical]="true" class="ml-3"></mat-divider>
+        <div class="secondHalf">
+            <mat-card-subtitle>
+                <p>{{oneMeetup.date.day}}.{{oneMeetup.date.month}}.{{oneMeetup.date.year}} - {{oneMeetup.time.hour}}:{{oneMeetup.time.minute}} h</p>
+                <p>{{oneMeetup.location}}</p>
+            </mat-card-subtitle>
+            <mat-card-content>
+                <span>{{oneMeetup.description}}</span>
+            </mat-card-content>
+        </div>
+    </div>
     <mat-card-actions>
-        <button mat-raised-button color="warn">Register</button>
+        <button mat-flat-button class="registerBtn">Register</button>
     </mat-card-actions>
 </mat-card>
 </div>

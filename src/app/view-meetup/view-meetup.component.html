@@ -12,7 +12,7 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-flat-button  class="viewMeetupButton">
+      <button mat-flat-button  class="viewMeetupButton" (click)="passParams(item.title)" [routerLink]="['/view-meetup']">
             View meetup
           <mat-icon aria-hidden="false">arrow_right_atl</mat-icon>
         </button>

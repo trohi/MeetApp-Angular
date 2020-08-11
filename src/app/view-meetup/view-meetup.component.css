@@ -20,6 +20,10 @@
     opacity: 0.8
 }
 
+.mat-card > .mat-card-content{
+    margin-left:3%
+} 
+
 img{
     max-width:35vh;
     max-height: 15vh;

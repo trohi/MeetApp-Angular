@@ -15,21 +15,24 @@ export class Store {
         location:"Konjic, Boracko jezero",
         imageUrl:"https://picsum.photos/id/1011/900/500",
         description:"Meetup for nature lovers, meetup is organised in 2 days full of educations and activitys",
-        date:"29.08.2020",
-        time:"10:00"
+        date:{day:"29", month:"08", year:"2020"},
+        time:{hour:"10", minute:"00"},
+        id:""
     },
     {
         title:"Global warming",
         location:"Toronto",
         imageUrl:`https://picsum.photos/id/984/900/500`,
         description:"Meetup for caring comunity, we'll be discussing modern trends and effects on society.",
-        date:"31.09.2020",
-        time: "14:00"
+        date:{day: "31", month:"09", year:"2020"},
+        time: {hour:"14", minute:"00"},
+        id:""
     }
 ]
     private loading:boolean;
     private isLoggedIn: boolean;
     private message:string;
+    private singleMeetup;
 
     constructor(  private router:Router){
         firebase.initializeApp({
@@ -89,7 +92,7 @@ export class Store {
         this.user=[]
     };
 
-    crateMeetup(payload){
+    createMeetup(payload){
         this.loading = true
         let meetup = {
             title:payload.title,
@@ -120,6 +123,7 @@ export class Store {
         .then(data=>{
             let meetups=[]
             const obj = data.val()
+            console.log(obj)
             for(let key in obj){
                 meetups.push({
                     id:key,
@@ -131,8 +135,8 @@ export class Store {
                     location: obj[key].title,
                     creatorId: obj[key].creatorId
                 });
-                this.newMeetup.push(...meetups)
             }
+            this.newMeetup.push(...meetups)
             this.loading = false
         })
         .catch(error=>{
@@ -143,6 +147,14 @@ export class Store {
 
     clearMessage(){
         this.message = ''
+    };
+
+    setSpecificMeetup(title){
+        let specificMeetup = this.newMeetup.find(meet=>{
+            return meet.title === title
+        })
+        console.log(specificMeetup)
+        this.singleMeetup = specificMeetup
     };
 
     //getters
@@ -161,5 +173,18 @@ export class Store {
     getMeetups(){
         //console.log(this.newMeetup)
         return this.newMeetup
+    };
+
+    /* getSpecificMeetup(title){
+        let specificMeetup = this.newMeetup.find(meet=>{
+            return meet.title === title
+        })
+        console.log(specificMeetup)
+        return specificMeetup
+    }; */
+
+    getSingleMeetup(){
+        return this.singleMeetup
     }
+
 }

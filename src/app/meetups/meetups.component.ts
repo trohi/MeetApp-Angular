@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '../shared/store.service';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-meetups',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MeetupsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store:Store, private router:Router) { }
+  oneMeetup;
 
   ngOnInit(): void {
+    this.oneMeetup = this.store.getSingleMeetup()
   }
 
 }

@@ -11,6 +11,10 @@ export class ViewMeetupComponent implements OnInit {
 
   constructor(private store:Store) { }
 
+  passParams(title){
+    this.store.setSpecificMeetup(title)
+  }
+
   ngOnInit(): void {
     this.meetups = this.store.getMeetups()
   }
