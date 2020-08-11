@@ -21,7 +21,6 @@ export class CreateMeetupComponent implements OnInit {
   } 
 
   onCreateMeetup(){
-    //console.log(this.newMeetup.date, this.newMeetup.title, this.newMeetup.location, this.newMeetup.time)
     const payloadMeetup = new MeetupModel(
       this.newMeetup.title,
       this.newMeetup.location,

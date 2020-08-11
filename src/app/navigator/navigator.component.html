@@ -10,7 +10,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span class="headerTitle"  [routerLink]="['/']">secondMeet</span>
+      <span class="headerTitle"  [routerLink]="['/']">meetApp</span>
       <div class="header-links" *ngIf="isLoggedIn">
           <button mat-button (click)="onLogout()" [routerLink]="['/']">Logout</button>
         </div>
