@@ -1,5 +1,5 @@
 .image{
-    width: 60vh;
+    width: 70vh;
     height: 50vh;
 }
 
@@ -15,7 +15,7 @@
 }
 
 .cardWrapper{
-    margin-top:5%;
+    margin-top:2%;
     display:flex;
     justify-content: center;
 }
@@ -23,6 +23,7 @@
 .dashboard-card{
     background-color: rgb(83, 83, 83);
     width:70%;
+    box-shadow: inset 42vh 10vh 45vh 10vh rgba(0,0,0,.85);
 }
 
 .Wrap{
@@ -40,7 +41,7 @@
 
 mat-card-subtitle{
     margin-left:5%;
-    margin-top:15%;
+    margin-top:18%;
     color:rgb(196, 189, 189)
 }
 
@@ -65,6 +66,5 @@ mat-card-title{
 .mat-divider{
     border-right-color:black;
     width:5px;
-    margin-top:7%;
-    margin-bottom:3%
+    margin-top:5%;
 }
