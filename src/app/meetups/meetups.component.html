@@ -22,11 +22,8 @@
             </mat-card-content>
         </div>
     </div>
-    <mat-card-actions *ngIf="userIsAuthenticated && !userIsCreator">
-        <button mat-flat-button class="registerBtn">Register</button>
-    </mat-card-actions>
-    <mat-card-actions *ngIf="userIsAuthenticated && userIsCreator && user">
-        <button mat-flat-button class="registerBtn">Unregister</button>
+    <mat-card-actions *ngIf="userIsAuthenticated && ! userIsCreator">
+        <button mat-flat-button class="registerBtn" (click)="onRegister()">{{userIsRegistered ? 'Unregister' : 'Register'}}</button>
     </mat-card-actions>
 </mat-card>
 </div>

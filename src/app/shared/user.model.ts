@@ -1,10 +1,10 @@
 export class UserModel{
-    public uid:string;
+    public id:string;
     public registeredMeetups:any;
     public fbKeys:any
 
-    constructor(uid:string, registeredMeetups:any, fbKeys:any){
-        this.uid = uid;
+    constructor(id:string, registeredMeetups:any, fbKeys:any){
+        this.id = id;
         this.registeredMeetups = registeredMeetups;
         this.fbKeys = fbKeys
     }

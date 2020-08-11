@@ -16,7 +16,7 @@ export class Store {
         description:"Meetup for nature lovers, meetup is organised in 2 days full of educations and activitys",
         date:{day:"29", month:"08", year:"2020"},
         time:{hour:"10", minute:"00"},
-        creatorId:""
+        creatorId:"1O8S3Ef0P7XHDms9IRUd6ZfQDhz2"
     },
     {
         title:"Global warming",
@@ -25,7 +25,7 @@ export class Store {
         description:"Meetup for caring comunity, we'll be discussing modern trends and effects on society.",
         date:{day: "31", month:"09", year:"2020"},
         time: {hour:"14", minute:"00"},
-        creatorId:""
+        creatorId:"1O8S3Ef0P7XHDms9IRUd6ZfQDhz2"
     }
 ]
     private User;
@@ -114,15 +114,15 @@ export class Store {
         firebase.database().ref('/users/' + this.User.id + '/registrations/').once('value')
         .then(data=>{
           let values = data.val()
-          let registeredMeetups = []
+          let registeredMeetupS = []
           let reversedRegistrations = {}
           for (let key in values){
-              registeredMeetups.push(values[key])
+              registeredMeetupS.push(values[key])
               reversedRegistrations[values[key]] = key
           } 
           let updatedUser = {
               id: this.User.id,
-              registeredMeetups: registeredMeetups,
+              registeredMeetups: registeredMeetupS,
               fbKeys: reversedRegistrations
           } 
           this.loading = false
@@ -158,6 +158,7 @@ export class Store {
             meetup.creatorId = key
             this.newMeetup.push(meetup)
             this.loading = false
+            this.router.navigate(['/'])
         })
         .catch(error=>{
             this.loading = false
@@ -196,7 +197,7 @@ export class Store {
     registerUserForMeetup(payload){
         this.loading = true
         const user = this.User
-        firebase.database().ref('/users/' + user.id + '/registrations/').push(payload)
+        firebase.database().ref('/users/' + this.User.id + '/registrations/').push(payload)
         .then(data=>{
             if(this.User.registeredMeetups.findIndex(meetup=> meetup.id === payload) >= 0){
                 return
@@ -218,6 +219,7 @@ export class Store {
             return
         }
         const fbKey = user.fbKeys[payload]
+        console.log(payload)
         firebase.database().ref('/users/' + user.id + '/registrations/').child(fbKey)
         .remove()
         .then(()=>{
