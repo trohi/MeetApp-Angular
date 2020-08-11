@@ -3,8 +3,7 @@
 </button>
 <mat-card class="dashboard-card" *ngFor="let item of meetups; let i = index" >
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{item.title}}</mat-card-title>
+      <mat-card-title class="title">{{item.title}}</mat-card-title>
     </mat-card-header>
     <img mat-card-image [src]="item.imageUrl" alt="Photo of a Shiba Inu">
     <mat-card-content>

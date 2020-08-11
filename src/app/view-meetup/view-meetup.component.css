@@ -3,6 +3,7 @@
     margin-left:auto;
     margin-right: auto;
     margin-top: 5%;
+    color:white;
     border: 1px solid grey;
     box-shadow: inset 42vh 10vh 45vh 10vh rgba(0,0,0,.85);
 }
@@ -20,8 +21,10 @@
 }
 
 img{
-    max-width:250px;
-    border-radius: 4%
+    max-width:35vh;
+    max-height: 15vh;
+    border-radius: 4%;
+    margin-left:3%
 }
 
 .backBtn{

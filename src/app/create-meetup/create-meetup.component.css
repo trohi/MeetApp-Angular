@@ -46,3 +46,7 @@
     color:#c9c4c4;
     transform: scale(1.5)
 }
+
+.srcImage{
+    max-width:40vh
+}
