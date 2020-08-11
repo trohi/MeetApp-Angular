@@ -5,15 +5,15 @@ export class MeetupModel {
     public description: string;
     public date: object;
     public time: object;
-    public id : string
+    public creatorId : string
 
-    constructor(title:string, location:string, imageUrl:string, description:string, date:object, time:object, id?:string){
+    constructor(title:string, location:string, imageUrl:string, description:string, date:object, time:object, creatorId?:string){
         this.title = title;
         this.location = location;
         this.imageUrl = imageUrl;
         this.description = description;
         this.date = date;
         this.time = time;
-        this.id = id
+        this.creatorId = creatorId
     }
 }

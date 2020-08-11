@@ -9,7 +9,6 @@ import { Injectable } from '@angular/core'
 })
 
 export class Store {
-    private user:UserModel[];
     private newMeetup:MeetupModel[]=[{
         title:"Boracko lake meet",
         location:"Konjic, Boracko jezero",
@@ -17,7 +16,7 @@ export class Store {
         description:"Meetup for nature lovers, meetup is organised in 2 days full of educations and activitys",
         date:{day:"29", month:"08", year:"2020"},
         time:{hour:"10", minute:"00"},
-        id:""
+        creatorId:""
     },
     {
         title:"Global warming",
@@ -26,9 +25,10 @@ export class Store {
         description:"Meetup for caring comunity, we'll be discussing modern trends and effects on society.",
         date:{day: "31", month:"09", year:"2020"},
         time: {hour:"14", minute:"00"},
-        id:""
+        creatorId:""
     }
 ]
+    private User;
     private loading:boolean;
     private isLoggedIn: boolean;
     private message:string;
@@ -54,11 +54,22 @@ export class Store {
         this.loading = true
         firebase.auth().createUserWithEmailAndPassword(payload.email,payload.password)
         .then(user=>{
-            console.log("Success!" + user);
+            console.log(user);
+            let newUser = {
+                id: user.user.uid,
+                registeredMeetups:[],
+                fbKeys:[]
+            }
+            this.User = newUser
             this.isLoggedIn = true
             this.router.navigate(['/'])
             this.loading = false
             this.message = ''
+            firebase.auth().onAuthStateChanged((user)=>{
+                if(user){
+                    this.fetchUsersData()
+                }
+            })
         })
         .catch(error=>{
             console.log(error.message)
@@ -74,9 +85,21 @@ export class Store {
         .then(user =>{
             console.log("Successfull login")
             this.router.navigate(['/'])
+            let newUser = {
+                id: user.user.uid,
+                registeredMeetups:[],
+                fbKeys:[]
+            }
+            this.User = newUser
             this.isLoggedIn = true
+            this.router.navigate(['/'])
             this.loading = false
             this.message = ''
+            firebase.auth().onAuthStateChanged((user)=>{
+                if(user){
+                    this.fetchUsersData()
+                }
+            })
         })
         .catch(error =>{
             this.message = error.message
@@ -86,10 +109,35 @@ export class Store {
         })
     };
 
+    fetchUsersData(){
+        this.loading = true
+        firebase.database().ref('/users/' + this.User.id + '/registrations/').once('value')
+        .then(data=>{
+          let values = data.val()
+          let registeredMeetups = []
+          let reversedRegistrations = {}
+          for (let key in values){
+              registeredMeetups.push(values[key])
+              reversedRegistrations[values[key]] = key
+          } 
+          let updatedUser = {
+              id: this.User.id,
+              registeredMeetups: registeredMeetups,
+              fbKeys: reversedRegistrations
+          } 
+          this.loading = false
+          this.User = updatedUser
+        })
+        .catch(error=>{
+            this.loading = false
+            console.log(error)
+        })
+    }
+
     logout(){
         firebase.auth().signOut()
         this.isLoggedIn = false
-        this.user=[]
+        this.User=[]
     };
 
     createMeetup(payload){
@@ -101,13 +149,13 @@ export class Store {
             description:payload.description,
             date:payload.date,
             time:payload.time,
-            id:''
+            creatorId:this.User.id
         }
         firebase.database().ref('meetups').push(meetup)
         .then(data=>{
             const key = data.key
             console.log(data)
-            meetup.id = key
+            meetup.creatorId = key
             this.newMeetup.push(meetup)
             this.loading = false
         })
@@ -145,6 +193,45 @@ export class Store {
         })
     };
 
+    registerUserForMeetup(payload){
+        this.loading = true
+        const user = this.User
+        firebase.database().ref('/users/' + user.id + '/registrations/').push(payload)
+        .then(data=>{
+            if(this.User.registeredMeetups.findIndex(meetup=> meetup.id === payload) >= 0){
+                return
+            }
+            this.User.registeredMeetups.push(payload)
+            this.User.fbKeys[payload] = data.key
+            this.loading = false
+        })
+        .catch(error=>{
+            this.loading = false
+            console.log(error.message)
+        })
+    };
+
+    unregisterFromMeetup(payload){
+        this.loading = true
+        const user = this.User
+        if(!user.fbKeys){
+            return
+        }
+        const fbKey = user.fbKeys[payload]
+        firebase.database().ref('/users/' + user.id + '/registrations/').child(fbKey)
+        .remove()
+        .then(()=>{
+            const registeredMeetups = this.User.registeredMeetups
+            registeredMeetups.splice(registeredMeetups.findIndex(meetup=> meetup.id === payload), 1)
+            Reflect.deleteProperty(this.User.fbKeys, payload)
+            this.loading = false
+        })
+        .catch(error=>{
+            this.loading = false
+            console.log(error.message)
+        })
+    }
+
     clearMessage(){
         this.message = ''
     };
@@ -175,13 +262,9 @@ export class Store {
         return this.newMeetup
     };
 
-    /* getSpecificMeetup(title){
-        let specificMeetup = this.newMeetup.find(meet=>{
-            return meet.title === title
-        })
-        console.log(specificMeetup)
-        return specificMeetup
-    }; */
+    getUser(){
+        return this.User
+    };
 
     getSingleMeetup(){
         return this.singleMeetup

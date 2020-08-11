@@ -1,7 +1,7 @@
 <button mat-flat-button class="backBtn" [routerLink]="['/']">
     <mat-icon class="backIcon">arrow_left_alt</mat-icon>
 </button>
-<mat-card class="dashboard-card" *ngFor="let item of meetups; let i = index" >
+<mat-card class="dashboard-card mb-3" *ngFor="let item of meetups; let i = index" >
     <mat-card-header>
       <mat-card-title class="title">{{item.title}}</mat-card-title>
     </mat-card-header>

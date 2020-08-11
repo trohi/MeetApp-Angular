@@ -1,9 +1,11 @@
 export class UserModel{
-    public email:string;
-    public password:string;
+    public uid:string;
+    public registeredMeetups:any;
+    public fbKeys:any
 
-    constructor(email:string, password:string){
-        this.email = email;
-        this.password = password
+    constructor(uid:string, registeredMeetups:any, fbKeys:any){
+        this.uid = uid;
+        this.registeredMeetups = registeredMeetups;
+        this.fbKeys = fbKeys
     }
 }
