@@ -27,6 +27,8 @@ export class Store {
         creatorId:"1O8S3Ef0P7XHDms9IRUd6ZfQDhz2"
     }
 ]
+    //  Declaration of propertys which are going to be used in 
+    //  getters and functions in this file 
     private User;
     private loading: boolean;
     private isLoggedIn: boolean;
@@ -34,6 +36,7 @@ export class Store {
     private singleMeetup;
 
     constructor(private router: Router){
+        //  Initialising firebase 
         firebase.initializeApp({
             apiKey: "AIzaSyArFIq1DcSJowifCpp7Gu3Qu_rZvyxCa7c",
             authDomain: "angularmeetup-6865a.firebaseapp.com",
@@ -47,6 +50,10 @@ export class Store {
     };
 
     //methods
+
+    //  Recieving a payload from sign up component and
+    //  reaching to firebase with its own built in functions
+    //  passing recieved parameters to firebae function which creates stores user
     createUser(payload){
         this.loading = true
         firebase.auth().createUserWithEmailAndPassword(payload.email,payload.password)
@@ -74,6 +81,9 @@ export class Store {
         })
     };
 
+    //  Recieving payload from sign in form and passing it to firebase
+    //  function which uses provided cridential to check if user exists
+    //  and return error or signed in user
     signUserIn(payload){
         this.loading = true
         firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
@@ -102,6 +112,8 @@ export class Store {
         })
     };
 
+    //  Fetching user's registrations if there is any and
+    //  storing it localy
     fetchUsersData(){
         this.loading = true
         firebase.database().ref('/users/' + this.User.id + '/registrations/').once('value')
@@ -126,12 +138,17 @@ export class Store {
         })
     };
 
+    //  logs user out and assignin empty array as User's local value
     logout(){
         firebase.auth().signOut()
         this.isLoggedIn = false
         this.User=[]
     };
 
+    //  Recieved payload from create meetup form and passing it to
+    //  firebase function which creates meetup and assigne property
+    //  creatorId to user's id. This property is used to connect created
+    //  meetup to coresponding user
     createMeetup(payload){
         this.loading = true
         let meetup = {
@@ -145,7 +162,7 @@ export class Store {
         }
         firebase.database().ref('meetups').push(meetup)
         .then(data=>{
-            const key = data.key
+            const key = data.key    // this key is unique id which is created by firebase
             meetup.creatorId = key
             this.newMeetup.push(meetup)
             this.loading = false
@@ -156,6 +173,8 @@ export class Store {
         })
     };
 
+    // Fetching all created meetups from firebase db
+    // and storing it localy
     loadMeetups(){
         this.loading = true
         firebase.database().ref('meetups').once('value')
@@ -182,6 +201,8 @@ export class Store {
         })
     };
 
+    // Storing new value to db /user/users.id/registrations which will contain meetup id and fbKey as its value
+    // Later i will use this meetup id to find meetup and register or unregister from it 
     registerUserForMeetup(payload){
         this.loading = true
         firebase.database().ref('/users/' + this.User.id + '/registrations/').push(payload)
@@ -190,7 +211,7 @@ export class Store {
                 return
             }
             this.User.registeredMeetups.push(payload)
-            this.User.fbKeys[payload] = data.key
+            this.User.fbKeys[payload] = data.key // data.key is unique firebase generated id/string i use it to easily access meetup when try to unregister
             this.loading = false
         })
         .catch(error=>{
@@ -222,6 +243,10 @@ export class Store {
         this.message = ''
     };
 
+    // setring up a meetup am i going to visit in details section.
+    // Meetups detail section should display one chosen meetup which I 
+    // am setting in following par of code. This action is called from 
+    // listed meeup on button click 'View meetup'
     setSpecificMeetup(title){
         let specificMeetup = this.newMeetup.find(meet=>{
             return meet.title === title
@@ -229,6 +254,7 @@ export class Store {
         this.singleMeetup = specificMeetup
     };
 
+    // Enabling way to set a error message from different components
     setErrorMessage(payload){
         this.message = payload
     }
