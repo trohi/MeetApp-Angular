@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '../shared/store.service'
-import { isError } from 'util';
+import { Store } from '../shared/store.service';
 
 @Component({
   selector: 'app-signup',
@@ -31,7 +30,6 @@ export class SignupComponent implements OnInit {
   }
 
   onSignup(){
-    console.log(this.store.getIsLoggedIn())
     this.store.createUser(this.user)
   }
 

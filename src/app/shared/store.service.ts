@@ -229,6 +229,10 @@ export class Store {
         this.singleMeetup = specificMeetup
     };
 
+    setErrorMessage(payload){
+        this.message = payload
+    }
+
     //getters
     getIsLoggedIn(){
         return this.isLoggedIn

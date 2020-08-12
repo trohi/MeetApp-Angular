@@ -28,10 +28,8 @@ export class SigninComponent implements OnInit {
   onSignIn(){
     this.store.signUserIn(this.user)
     if(this.isLoggedIn == true){
-      console.log("LOGINAR"+this.isLoggedIn)
         this.router.navigate(['/'])
     } else {
-      console.log("NIJE LOGIRAN"+this.isLoggedIn)
     }
   };
 

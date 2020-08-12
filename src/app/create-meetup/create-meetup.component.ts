@@ -29,7 +29,23 @@ export class CreateMeetupComponent implements OnInit {
       this.newMeetup.date,
       this.newMeetup.time
     )
-    this.store.createMeetup(payloadMeetup)
+
+    if(payloadMeetup.title && payloadMeetup.date && payloadMeetup.location && payloadMeetup.time && payloadMeetup.imageUrl && payloadMeetup.description){
+      this.store.createMeetup(payloadMeetup)
+    } else {
+      window.scrollTo(0,0)
+      let errorMessage = 'All fields are required, please fill all fields and try again.'
+      this.store.setErrorMessage(errorMessage)
+    }
+    
+  }
+
+  closeError(){
+    return this.store.clearMessage()
+  }
+
+  get message(){
+    return this.store.getMessage()
   }
 
   ngOnInit(): void {

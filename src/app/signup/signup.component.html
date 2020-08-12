@@ -25,7 +25,7 @@
             <mat-label>Confirm password</mat-label>
             <input type="password" matInput placeholder="repeat your password" [(ngModel)]="repeatPassword" required>
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-            <mat-hint id="passErrorMsg">{{user.password !== repeatPassword ? "Passwords do not match" :""}}</mat-hint>
+            <mat-hint id="passErrorMsg">{{(user.password !== repeatPassword) && (user.password.length > 0) ? "Passwords do not match" :""}}</mat-hint>
         </mat-form-field>
     <div class="loginWrapper">
         <button mat-flat-button class="signupBtn" (click)='onSignup()'>Signup</button>
