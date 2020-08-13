@@ -69,3 +69,11 @@ mat-card-title{
     width:5px;
     margin-top:5%;
 }
+
+.location{
+    font-family: Italic
+}
+
+.timeAndDate{
+    font-family: Italic
+}

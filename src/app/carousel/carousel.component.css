@@ -26,18 +26,20 @@ img{
 }
 
 .carousel-caption{
-    background-color:rgb(161, 157, 157);
+    background-color:white;
     width:100%;
     opacity: 0.7;
     margin-left:-15%
 }
 
 .carousel-caption > h3{
-   color:black
+   color:black;
+   font-family:'Arial Narrow Bold'
 }
 
 .carousel-caption p{
-    color:black
+    color:black;
+    font-family:'Arial Narrow Bold'
 }
 
 ngb-carousel{

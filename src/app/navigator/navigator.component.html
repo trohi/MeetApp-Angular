@@ -10,13 +10,13 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span class="headerTitle"  [routerLink]="['/']">meetApp</span>
+      <span class="headerTitle"  [routerLink]="['/']" (click)="clearError()">meetApp</span>
       <div class="header-links" *ngIf="isLoggedIn">
-          <button mat-button (click)="onLogout()" [routerLink]="['/']">Logout</button>
+          <button mat-button (click)="onLogout()" [routerLink]="['/']" (click)="clearError()">Logout</button>
         </div>
       <div class="header-links" *ngIf="!isLoggedIn">
-        <button mat-button  [routerLink]="['/signin']">Sign in</button> |
-        <button mat-button  [routerLink]="['/signup']">Sign up</button>
+        <button mat-button  [routerLink]="['/signin']" (click)="clearError()">Sign in</button> |
+        <button mat-button  [routerLink]="['/signup']" (click)="clearError()">Sign up</button>
       </div>
     </mat-toolbar>
   </mat-sidenav-content>

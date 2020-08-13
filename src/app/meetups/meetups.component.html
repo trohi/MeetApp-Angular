@@ -14,8 +14,8 @@
         <mat-divider [vertical]="true" class="ml-3"></mat-divider>
         <div class="secondHalf">
             <mat-card-subtitle>
-                <p>{{oneMeetup.date.day}}.{{oneMeetup.date.month}}.{{oneMeetup.date.year}} - {{oneMeetup.time.hour}}:{{oneMeetup.time.minute}} h</p>
-                <p>{{oneMeetup.location}}</p>
+                <p class="timeAndDate">{{oneMeetup.date.day}}.{{oneMeetup.date.month}}.{{oneMeetup.date.year}} - {{oneMeetup.time.hour}}:{{oneMeetup.time.minute}} h</p>
+                <p class="location">{{oneMeetup.location}}</p>
             </mat-card-subtitle>
             <mat-card-content>
                 <span>{{oneMeetup.description}}</span>

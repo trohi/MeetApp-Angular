@@ -28,6 +28,10 @@ export class NavigatorComponent implements OnInit{
 
   constructor(private breakpointObserver: BreakpointObserver, private store:Store) {}
 
+  clearError(){
+    this.store.clearMessage()
+  }
+
   ngOnInit(){
   }
 }
